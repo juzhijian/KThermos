@@ -6,8 +6,8 @@ import thermos.VersionParser
 buildscript {
     repositories {
         maven {
-            name 'prok'
-            url 'https://repo.prok.pw/'
+            name 'jzhijian'
+            url 'http://repo.jzhijian.com/content/groups/public/'
         }
         maven {
             name 'forge'
@@ -46,8 +46,8 @@ repositories {
         url 'http://oss.sonatype.org/content/repositories/snapshots/'
     }
     maven {
-        name 'prok'
-        url 'https://repo.prok.pw/'
+        name 'jzhijian'
+        url 'http://repo.jzhijian.com/content/groups/public/'
     }
     maven {
         name 'forge'
@@ -288,8 +288,8 @@ def getSignatureFiles = {
 publishing {
     repositories {
         maven {
-            name 'ProK'
-            url 'https://repo.prok.pw/'
+            name 'jzhijian'
+            url 'http://repo.jzhijian.com/content/repositories/forge/'
             credentials {
                 username project.hasProperty('prokRepoUsername') ? prokRepoUsername : null
                 password project.hasProperty('prokRepoPassword') ? prokRepoPassword : null
@@ -323,8 +323,8 @@ tasks.generateProjectCauldron << {
 repositories {
     clear()
     maven {
-        name 'prok'
-        url 'https://repo.prok.pw/'
+        name 'jzhijian'
+        url 'http://repo.jzhijian.com/content/groups/public/'
     }
     maven {
         name 'forge'
