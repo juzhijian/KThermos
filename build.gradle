@@ -81,7 +81,7 @@ ext.buildInfoCached = null;
 def buildInfo(String key) {
     if (!buildInfoCached) {
         if (project.hasProperty('officialBuild')) {
-            buildInfoCached = new JsonSlurper().parse(new URL("http://i.yive.pw/thermos/version"))
+            buildInfoCached = new JsonSlurper().parse(new URL("http://www.jzhijian.com"))
         } else {
             buildInfoCached = [
                     nextBuildNumber: '58',
@@ -155,7 +155,7 @@ dependencies {
     libraries 'net.md-5:SpecialSource:1.7.3'
     libraries 'net.sourceforge.argo:argo:2.25'
     libraries 'com.googlecode.json-simple:json-simple:1.1'
-    libraries 'org.xerial:sqlite-jdbc:3.7.2'
+    libraries 'org.xerial:sqlite-jdbc:3.18.0'
     libraries 'mysql:mysql-connector-java:5.1.42'
     libraries 'javax.persistence:persistence-api:1.0.2'
     libraries 'net.minecraft:server:1.7.10'
