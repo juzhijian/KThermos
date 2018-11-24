@@ -3,17 +3,17 @@ package thermos
 import java.util.regex.Matcher
 
 class VersionParser {
-    public static String parseForgeVersion(File forgeFile, File propsFile) {
+    static String parseForgeVersion(File forgeFile, File propsFile) {
         def forgeVersion = forgeFile.text
-        def int majorVersion = v(forgeVersion =~ /.+int majorVersion\s+=\s+(\d+);/)
-        def int minorVersion = v(forgeVersion =~ /.+int minorVersion\s+=\s+(\d+);/)
-        def int revisionVersion = v(forgeVersion =~ /.+int revisionVersion\s+=\s+(\d+);/)
-        def int buildVersion = parseForgeRevision propsFile
+        int majorVersion = v(forgeVersion =~ /.+int majorVersion\s+=\s+(\d+);/)
+        int minorVersion = v(forgeVersion =~ /.+int minorVersion\s+=\s+(\d+);/)
+        int revisionVersion = v(forgeVersion =~ /.+int revisionVersion\s+=\s+(\d+);/)
+        int buildVersion = parseForgeRevision propsFile
         return "${majorVersion}.${minorVersion}.${revisionVersion}.${buildVersion}"
     }
 
-    def static int parseForgeRevision(File propsFile) {
-        def props = new Properties();
+    static int parseForgeRevision(File propsFile) {
+        def props = new Properties()
         propsFile.withInputStream { props.load(it) }
         props['fmlbuild.build.number'] as int
     }

@@ -76,7 +76,7 @@ minecraft {
 
 group = 'juzhijian'
 
-ext.buildInfoCached = null;
+ext.buildInfoCached = null
 
 def buildInfo(String key) {
     if (!buildInfoCached) {
@@ -89,10 +89,10 @@ def buildInfo(String key) {
             ]
         }
     }
-    return key ? buildInfoCached[key] : buildInfoCached;
+    return key ? buildInfoCached[key] : buildInfoCached
 }
 
-ext.gitInfoCached = null;
+ext.gitInfoCached = null
 
 def gitInfo(String key) {
     if (!gitInfoCached) {
@@ -112,7 +112,7 @@ def gitInfo(String key) {
             ]
         }
     }
-    return key ? gitInfoCached[key] : gitInfoCached;
+    return key ? gitInfoCached[key] : gitInfoCached
 }
 
 ext.mcVersion = "1.7.10"
@@ -171,7 +171,7 @@ packageUniversal {
     from { configurations.exported.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
-def String repeat(String string, int times) {
+String repeat(String string, int times) {
     StringBuilder builder = new StringBuilder(string.length() * times)
     times.times { builder.append(string) }
     builder as String

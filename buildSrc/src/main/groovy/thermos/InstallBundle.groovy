@@ -7,13 +7,13 @@ import org.gradle.api.tasks.*
 
 class InstallBundle extends DefaultTask {
     @InputFile
-    def File serverJar
+    File serverJar
 
     @InputFiles
-    def ConfigurableFileCollection bootstrapClasspath
+    ConfigurableFileCollection bootstrapClasspath
 
     @Input
-    def String bootstrapMain
+    String bootstrapMain
 
     InstallBundle() {
         bootstrapClasspath = project.files()
@@ -24,7 +24,7 @@ class InstallBundle extends DefaultTask {
     }
 
     @OutputDirectory
-    def File getInstallLocation() {
+    File getInstallLocation() {
         new File(project.buildDir, 'bundle')
     }
 
@@ -33,7 +33,7 @@ class InstallBundle extends DefaultTask {
         installLocation.deleteDir()
         installLocation.mkdirs()
         new File(installLocation, "README.txt").withWriter {
-            def String jarPath = 'bin/ca/tcpr/Thermos/' << project.version << File.separator << 'Thermos-' << project.version << '.jar'
+            String jarPath = 'bin/ca/tcpr/Thermos/' << project.version << File.separator << 'Thermos-' << project.version << '.jar'
 
             it << '''Thermos installation guide
 

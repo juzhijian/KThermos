@@ -11,17 +11,17 @@ import org.gradle.api.tasks.SkipWhenEmpty
 import org.gradle.api.tasks.WorkResult
 import org.gradle.api.tasks.bundling.AbstractArchiveTask
 
-public class CreateChangelog extends AbstractArchiveTask {
+class CreateChangelog extends AbstractArchiveTask {
     @Input
-    def String oldChangelogUrl
+    String oldChangelogUrl
     @Input
-    def String hash
+    String hash
     @Input
-    def String message
+    String message
     @Input
-    def String version
+    String version
     @Input
-    def String format = "# <version>: <hash>\n<message>\n\n"
+    String format = "# <version>: <hash>\n<message>\n\n"
 
     @Override
     FileCollection getSource() {
@@ -33,25 +33,25 @@ public class CreateChangelog extends AbstractArchiveTask {
         return new CopyAction() {
             @Override
             WorkResult execute(CopyActionProcessingStream stream) {
-                def oldChangelog;
+                def oldChangelog
                 try {
-                    oldChangelog = new URL(oldChangelogUrl).text.trim();
+                    oldChangelog = new URL(oldChangelogUrl).text.trim()
                 } catch (Exception e) {
                     if (!project.hasProperty('ignoreOldChangelog'))
                         throw new GradleException('Error occurred during fetching latest log', e)
                     oldChangelog = ''
-                    e.printStackTrace();
+                    e.printStackTrace()
                 }
                 try {
-                    def newMessage = '';
+                    def newMessage = ''
                     message.eachLine { newMessage += '   ' + it + '\n' }
                     def append = format.replace('<version>', version).replace('<hash>', hash).replace('<message>', message)
-                    def changelog = append + oldChangelog;
+                    def changelog = append + oldChangelog
                     archivePath.write(changelog.trim(), 'utf-8')
-                    return new SimpleWorkResult(true);
+                    return new SimpleWorkResult(true)
                 } catch(Exception e) {
-                    e.printStackTrace();
-                    return new SimpleWorkResult(false);
+                    e.printStackTrace()
+                    return new SimpleWorkResult(false)
                 }
             }
         }
