@@ -10,7 +10,7 @@ import net.minecraftforge.cauldron.configuration.StringSetting;
 
 public class ThermosConfig extends ConfigBase {
     public BoolSetting commandEnable = new BoolSetting(this, "command.enable", true, "Enable Thermos command");
-    public BoolSetting opConsoleOnly = new BoolSetting(this, "op.consoleonly", false, "Set the OP command to only be allowed to run in console");
+    public BoolSetting opConsoleOnly = new BoolSetting(this, "op.opConsoleOnly", false, "Set the OP command to only be allowed to run in console");
     public BoolSetting updatecheckerEnable = new BoolSetting(this, "updatechecker.enable", true, "Enable Thermos update checker");
     public BoolSetting updatecheckerQuiet = new BoolSetting(this, "updatechecker.quiet", false, "Print less info during update");
 
